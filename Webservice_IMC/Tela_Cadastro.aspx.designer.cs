@@ -31,7 +31,7 @@ namespace Webservice_IMC {
         protected global::System.Web.UI.WebControls.Label Labeltitulo;
         
         /// <summary>
-        /// labelNome control.
+        /// labelNome control
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
