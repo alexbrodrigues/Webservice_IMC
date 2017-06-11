@@ -18,8 +18,51 @@ namespace Webservice_IMC
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
-    public class Service1 : System.Web.Services.WebService
+    public class Service1 : WebService
     {
+
+        public SqlConnection connection = new SqlConnection("Data Source=VM-ALEX/SQLSERVER2008R2;Initial Catalog=DB_IMC;Persist Security Info=True;User ID=users3i;Password=users3i");
+
+        [WebMethod]
+        public void incluirDados(string nome,DateTime dataNascimento ,string sexo, string cpf, string rg, Double peso, Double altura, string email,string etnia, int ativoExercicio, int ativoNutricionista)
+        {
+            connection.Open();
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter ad = new SqlDataAdapter("INSERT INTO Pessoa (nome, dataNascimento, sexo, cpf, rg, peso,altura,email,etnia,ativoExercicio,ativoNutricionista) VALUES(@nome, @sobrenome, @email, @cpf, @dataNascimento, @rg)", conn);
+
+            ad.SelectCommand.Parameters.Add("@nome", SqlDbType.VarChar, 250).Value = nome;
+            ad.SelectCommand.Parameters.Add("@dataNascimento", SqlDbType.Date, 11).Value = dataNascimento;
+            ad.SelectCommand.Parameters.Add("@sexo", SqlDbType.VarChar, 45).Value = sexo;
+            ad.SelectCommand.Parameters.Add("@cpf", SqlDbType.VarChar, 11).Value = cpf;
+            ad.SelectCommand.Parameters.Add("@rg", SqlDbType.VarChar, 11).Value = rg;
+            ad.SelectCommand.Parameters.Add("@peso", SqlDbType.Decimal).Value = peso;
+            ad.SelectCommand.Parameters.Add("@altura", SqlDbType.Decimal).Value = altura;
+            ad.SelectCommand.Parameters.Add("@email", SqlDbType.VarChar,255).Value = email;
+            ad.SelectCommand.Parameters.Add("@etnia", SqlDbType.VarChar).Value = etnia;
+            ad.SelectCommand.Parameters.Add("@ativoExercicio", SqlDbType.Int).Value = ativoExercicio;
+            ad.SelectCommand.Parameters.Add("@ativoNutricionista", SqlDbType.Int).Value = ativoNutricionista;
+
+            try
+            {
+                ad.Fill(ds);
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("ERRO BANCO DE DADOS: " + ex.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO RUNTIME: " + ex.Message.ToString());
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+                ad.Dispose();
+            }
+        }
+
         [WebMethod]
         public void EnviaEmail(String recbEmail, String textoRecb)
         {
@@ -38,9 +81,6 @@ namespace Webservice_IMC
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
             smtp.Send(mail);
         }
-
-
-        public SqlConnection connection = new SqlConnection("Data Source=VM-ALEX/SQLSERVER2008R2;Initial Catalog=DB_IMC;Persist Security Info=True;User ID=users3i;Password=users3i");
 
         [WebMethod(Description = "Calcula IMC")]
 
@@ -121,13 +161,13 @@ namespace Webservice_IMC
        
     }
 
-    public DataSet GravarnoBD(int id_Cadastro,string nome, String sexo,String Cpf,
-                                                String rg, string end,string email,double imc)
+        /*public DataSet GravarnoBD(int id_Cadastro,string nome, String sexo,String Cpf,
+                                                    String rg, string end,string email,double imc)
 
-    {
+        {
 
 
-        return();
-    }
+            return();
+        }*/
     }
 }
