@@ -147,21 +147,20 @@ namespace Webservice_IMC
 
         [WebMethod(Description = "Calcula IMC")]
 
-        public void CalculaImC(string nome,string sexo, string cpf, string rg, string endereco, string email, bool pratica, bool nutric, float altura, float peso)
+        public void CalculaImC(int idPessoa, string nomeCompleto, DateTime dataNascimento, string sexo, string cpf, string rg, Double peso, Double altura, string email, string etnia, int ativoExercicio, int ativoNutricionista, string logradouro, string numero, string complemento, string bairro, string municipio, string estado, string pais, string cep)
         {
-            string pNome = nome;
+            string pNome = nomeCompleto;
             string pSexo = sexo;
             string pCPF = cpf;
             string pRG = rg;
-            string pEndereco = endereco;
             string pEmail = email;
-            bool pratikExerc = pratica; //1 = sim; 0 = não
-            bool visitNutri = nutric;   //1 = sim; 0 = não
+            int pratikExerc = ativoExercicio; //1 = sim; 0 = não
+            int visitNutri = ativoNutricionista;   //1 = sim; 0 = não
 
-            float pPeso = peso;
-            float pAltura = altura;
-            float pAltura2 = (altura * altura);
-            float pImc = (peso / pAltura2);
+            Double pPeso = peso;
+            Double pAltura = altura;
+            Double pAltura2 = (altura * altura);
+            Double pImc = (peso / pAltura2);
         //string msg;
 
 
@@ -218,19 +217,7 @@ namespace Webservice_IMC
 
                     }
                     break;
-            }
-
-        
-       
+            }    
     }
-
-        /*public DataSet GravarnoBD(int id_Cadastro,string nome, String sexo,String Cpf,
-                                                    String rg, string end,string email,double imc)
-
-        {
-
-
-            return();
-        }*/
     }
 }
