@@ -21,17 +21,17 @@ namespace Webservice_IMC
     public class Service1 : WebService
     {
 
-        public SqlConnection connection = new SqlConnection("Data Source=VM-ALEX/SQLSERVER2008R2;Initial Catalog=DB_IMC;Persist Security Info=True;User ID=users3i;Password=users3i");
+        public SqlConnection connection = new SqlConnection(@"Data Source=VM-ALEX\SQLSERVER2008R2;Initial Catalog=DB_IMC;Persist Security Info=True;User ID=users3i;Password=users3i");
 
         [WebMethod]
-        public void incluirDados(string nome,DateTime dataNascimento ,string sexo, string cpf, string rg, Double peso, Double altura, string email,string etnia, int ativoExercicio, int ativoNutricionista, string logradouro, string numero , string complemento, string bairro , string municipio, string estado , string pais, string cep)
+        public void incluirDados(string nomeCompleto,DateTime dataNascimento ,string sexo, string cpf, string rg, Double peso, Double altura, string email,string etnia, int ativoExercicio, int ativoNutricionista, string logradouro, string numero , string complemento, string bairro , string municipio, string estado , string pais, string cep)
         {
             connection.Open();
 
             DataSet ds = new DataSet();
-            SqlDataAdapter ad = new SqlDataAdapter("INSERT INTO Pessoa (nome, dataNascimento, sexo, cpf, rg, peso,altura,email,etnia,ativoExercicio,ativoNutricionista,logradouro, numero , complemento, bairro , municipio, estado , pais, cep) VALUES(@nome, @dataNascimento, @sexo, @cpf, @rg, @peso,@altura,@email,@etnia,@ativoExercicio,@ativoNutricionista,@logradouro, @numero , @complemento, @bairro , @municipio, @estado , @pais, @cep)", connection);
+            SqlDataAdapter ad = new SqlDataAdapter("INSERT INTO Pessoa (nomeCompleto, dataNascimento, sexo, cpf, rg, peso,altura,email,etnia,ativoExercicio,ativoNutricionista,logradouro, numero , complemento, bairro , municipio, estado , pais, cep) VALUES(@nomeCompleto, @dataNascimento, @sexo, @cpf, @rg, @peso,@altura,@email,@etnia,@ativoExercicio,@ativoNutricionista,@logradouro, @numero , @complemento, @bairro , @municipio, @estado , @pais, @cep)", connection);
 
-            ad.SelectCommand.Parameters.Add("@nome", SqlDbType.VarChar, 250).Value = nome;
+            ad.SelectCommand.Parameters.Add("@nomeCompleto", SqlDbType.VarChar, 250).Value = nomeCompleto;
             ad.SelectCommand.Parameters.Add("@dataNascimento", SqlDbType.Date, 11).Value = dataNascimento;
             ad.SelectCommand.Parameters.Add("@sexo", SqlDbType.VarChar, 45).Value = sexo;
             ad.SelectCommand.Parameters.Add("@cpf", SqlDbType.VarChar, 11).Value = cpf;
@@ -42,14 +42,14 @@ namespace Webservice_IMC
             ad.SelectCommand.Parameters.Add("@etnia", SqlDbType.VarChar,255).Value = etnia;
             ad.SelectCommand.Parameters.Add("@ativoExercicio", SqlDbType.Int).Value = ativoExercicio;
             ad.SelectCommand.Parameters.Add("@ativoNutricionista", SqlDbType.Int).Value = ativoNutricionista;
-            ad.SelectCommand.Parameters.Add("@logradouro", SqlDbType.VarChar).Value = logradouro;
-            ad.SelectCommand.Parameters.Add("@numero", SqlDbType.VarChar).Value = numero;
-            ad.SelectCommand.Parameters.Add("@complemento", SqlDbType.VarChar).Value = complemento;
-            ad.SelectCommand.Parameters.Add("@bairro", SqlDbType.VarChar).Value = bairro;
-            ad.SelectCommand.Parameters.Add("@municipio", SqlDbType.VarChar).Value = municipio;
-            ad.SelectCommand.Parameters.Add("@estado", SqlDbType.VarChar).Value = estado;
-            ad.SelectCommand.Parameters.Add("@pais", SqlDbType.VarChar).Value = pais;
-            ad.SelectCommand.Parameters.Add("@cep", SqlDbType.VarChar).Value = cep;
+            ad.SelectCommand.Parameters.Add("@logradouro", SqlDbType.VarChar,255).Value = logradouro;
+            ad.SelectCommand.Parameters.Add("@numero", SqlDbType.VarChar,10).Value = numero;
+            ad.SelectCommand.Parameters.Add("@complemento", SqlDbType.VarChar,255).Value = complemento;
+            ad.SelectCommand.Parameters.Add("@bairro", SqlDbType.VarChar,100).Value = bairro;
+            ad.SelectCommand.Parameters.Add("@municipio", SqlDbType.VarChar,100).Value = municipio;
+            ad.SelectCommand.Parameters.Add("@estado", SqlDbType.VarChar,100).Value = estado;
+            ad.SelectCommand.Parameters.Add("@pais", SqlDbType.VarChar,100).Value = pais;
+            ad.SelectCommand.Parameters.Add("@cep", SqlDbType.VarChar,8).Value = cep;
 
             try
             {
