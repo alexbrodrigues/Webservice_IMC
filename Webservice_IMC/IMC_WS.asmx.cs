@@ -11,14 +11,14 @@ using System.Net.Mail;
 namespace Webservice_IMC
 {
     /// <summary>
-    /// Summary description for Service1
+    /// Summary description for IMC_WS
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
-    public class Service1 : WebService
+    public class IMC_WS: WebService 
     {
 
         public SqlConnection connection = new SqlConnection(@"Data Source=VM-ALEX\SQLSERVER2008R2;Initial Catalog=DB_IMC;Persist Security Info=True;User ID=users3i;Password=users3i");
@@ -78,7 +78,7 @@ namespace Webservice_IMC
 
             DataSet ds = new DataSet();
 
-            SqlDataAdapter ad = new SqlDataAdapter("UPDATE Pessoa SET nomeCompleto = @nomeCompleto, dataNascimento = @dataNascimento,sexo = @sexo, cpf = @cpf, senha = @senha,  cpf = @cpf, rg = @rg, peso = @peso,altura = @altura,email = @email,etnia = @etnia,ativoExercicio = @ativoExercicio,ativoNutricionista = @ativoNutricionista , logradouro = @logradouro, numero = @numero, complemento = @complemento, bairro = @bairro, municipio = @municipio, estado = @estado, pais = @pais, cep = @cep WHERE idPessoa = @idPessoa", connection);
+            SqlDataAdapter ad = new SqlDataAdapter("UPDATE Pessoa SET nomeCompleto = @nomeCompleto, dataNascimento = @dataNascimento,sexo = @sexo, cpf = @cpf, rg = @rg, peso = @peso,altura = @altura,email = @email,etnia = @etnia,ativoExercicio = @ativoExercicio,ativoNutricionista = @ativoNutricionista , logradouro = @logradouro, numero = @numero, complemento = @complemento, bairro = @bairro, municipio = @municipio, estado = @estado, pais = @pais, cep = @cep WHERE idPessoa = @idPessoa", connection);
             ad.SelectCommand.Parameters.AddWithValue("@idPessoa",SqlDbType.Int).Value=idPessoa;
             ad.SelectCommand.Parameters.Add("@nomeCompleto", SqlDbType.VarChar, 250).Value = nomeCompleto;
             ad.SelectCommand.Parameters.Add("@dataNascimento", SqlDbType.Date, 11).Value = dataNascimento;

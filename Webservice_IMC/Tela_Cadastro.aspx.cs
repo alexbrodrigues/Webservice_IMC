@@ -13,5 +13,12 @@ namespace Webservice_IMC
         {
 
         }
+
+
+
+        protected void BtEnviar_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

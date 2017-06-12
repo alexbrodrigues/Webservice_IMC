@@ -53,13 +53,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service1.asmx" />
+    <Content Include="IMC_WS.asmx" />
     <Content Include="Tela_Cadastro.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service1.asmx.cs">
-      <DependentUpon>Service1.asmx</DependentUpon>
+    <Compile Include="IMC_WS.asmx.cs">
+      <DependentUpon>IMC_WS.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

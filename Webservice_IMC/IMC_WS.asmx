@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="IMC_WS.asmx.cs" Class="Webservice_IMC.IMC_WS" %>
