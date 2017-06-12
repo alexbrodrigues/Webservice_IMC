@@ -72,6 +72,56 @@ namespace Webservice_IMC
         }
 
         [WebMethod]
+        public void alterarDados(int idPessoa, string nomeCompleto, DateTime dataNascimento, string sexo, string cpf, string rg, Double peso, Double altura, string email, string etnia, int ativoExercicio, int ativoNutricionista, string logradouro, string numero, string complemento, string bairro, string municipio, string estado, string pais, string cep)
+        {
+            connection.Open();
+
+            DataSet ds = new DataSet();
+
+            SqlDataAdapter ad = new SqlDataAdapter("UPDATE Pessoa SET nomeCompleto = @nomeCompleto, dataNascimento = @dataNascimento,sexo = @sexo, cpf = @cpf, senha = @senha,  cpf = @cpf, rg = @rg, peso = @peso,altura = @altura,email = @email,etnia = @etnia,ativoExercicio = @ativoExercicio,ativoNutricionista = @ativoNutricionista , logradouro = @logradouro, numero = @numero, complemento = @complemento, bairro = @bairro, municipio = @municipio, estado = @estado, pais = @pais, cep = @cep WHERE idPessoa = @idPessoa", connection);
+            ad.SelectCommand.Parameters.Add("@idPessoa", SqlDbType.Int).Value = idPessoa;
+            ad.SelectCommand.Parameters.Add("@nomeCompleto", SqlDbType.VarChar, 250).Value = nomeCompleto;
+            ad.SelectCommand.Parameters.Add("@dataNascimento", SqlDbType.Date, 11).Value = dataNascimento;
+            ad.SelectCommand.Parameters.Add("@sexo", SqlDbType.VarChar, 45).Value = sexo;
+            ad.SelectCommand.Parameters.Add("@cpf", SqlDbType.VarChar, 11).Value = cpf;
+            ad.SelectCommand.Parameters.Add("@rg", SqlDbType.VarChar, 11).Value = rg;
+            ad.SelectCommand.Parameters.Add("@peso", SqlDbType.Decimal).Value = peso;
+            ad.SelectCommand.Parameters.Add("@altura", SqlDbType.Decimal).Value = altura;
+            ad.SelectCommand.Parameters.Add("@email", SqlDbType.VarChar, 255).Value = email;
+            ad.SelectCommand.Parameters.Add("@etnia", SqlDbType.VarChar, 255).Value = etnia;
+            ad.SelectCommand.Parameters.Add("@ativoExercicio", SqlDbType.Int).Value = ativoExercicio;
+            ad.SelectCommand.Parameters.Add("@ativoNutricionista", SqlDbType.Int).Value = ativoNutricionista;
+            ad.SelectCommand.Parameters.Add("@logradouro", SqlDbType.VarChar, 255).Value = logradouro;
+            ad.SelectCommand.Parameters.Add("@numero", SqlDbType.VarChar, 10).Value = numero;
+            ad.SelectCommand.Parameters.Add("@complemento", SqlDbType.VarChar, 255).Value = complemento;
+            ad.SelectCommand.Parameters.Add("@bairro", SqlDbType.VarChar, 100).Value = bairro;
+            ad.SelectCommand.Parameters.Add("@municipio", SqlDbType.VarChar, 100).Value = municipio;
+            ad.SelectCommand.Parameters.Add("@estado", SqlDbType.VarChar, 100).Value = estado;
+            ad.SelectCommand.Parameters.Add("@pais", SqlDbType.VarChar, 100).Value = pais;
+            ad.SelectCommand.Parameters.Add("@cep", SqlDbType.VarChar, 8).Value = cep;
+
+
+            try
+            {
+                ad.Fill(ds);
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("ERRO BANCO DE DADOS: " + ex.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO RUNTIME: " + ex.Message.ToString());
+            }
+            finally
+            {
+                connection.Close();
+                connection.Dispose();
+                ad.Dispose();
+            }
+        }
+
+        [WebMethod]
         public void EnviaEmail(String recbEmail, String textoRecb)
         {
             String ptextoRecb = textoRecb;
