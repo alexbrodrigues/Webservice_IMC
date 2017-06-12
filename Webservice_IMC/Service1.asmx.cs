@@ -79,7 +79,7 @@ namespace Webservice_IMC
             DataSet ds = new DataSet();
 
             SqlDataAdapter ad = new SqlDataAdapter("UPDATE Pessoa SET nomeCompleto = @nomeCompleto, dataNascimento = @dataNascimento,sexo = @sexo, cpf = @cpf, senha = @senha,  cpf = @cpf, rg = @rg, peso = @peso,altura = @altura,email = @email,etnia = @etnia,ativoExercicio = @ativoExercicio,ativoNutricionista = @ativoNutricionista , logradouro = @logradouro, numero = @numero, complemento = @complemento, bairro = @bairro, municipio = @municipio, estado = @estado, pais = @pais, cep = @cep WHERE idPessoa = @idPessoa", connection);
-            ad.SelectCommand.Parameters.Add("@idPessoa", SqlDbType.Int).Value = idPessoa;
+            ad.SelectCommand.Parameters.AddWithValue("@idPessoa",SqlDbType.Int).Value=idPessoa;
             ad.SelectCommand.Parameters.Add("@nomeCompleto", SqlDbType.VarChar, 250).Value = nomeCompleto;
             ad.SelectCommand.Parameters.Add("@dataNascimento", SqlDbType.Date, 11).Value = dataNascimento;
             ad.SelectCommand.Parameters.Add("@sexo", SqlDbType.VarChar, 45).Value = sexo;
@@ -122,22 +122,27 @@ namespace Webservice_IMC
         }
 
         [WebMethod]
-        public void EnviaEmail(String recbEmail, String textoRecb)
+        public void MandaEmail(string recbEmail, string textoRecb)
         {
-            String ptextoRecb = textoRecb;
-            String precbEmail= textoRecb;
+
+            string pMensagem = textoRecb;
+            string pEmailDestino = recbEmail;
+
+            MailMessage client = new MailMessage();
+            client.From = new MailAddress("COLOCAR EMAIL DE ENVIO");
+            client.To.Add(new MailAddress(pEmailDestino));
+            client.Subject = "Calculo IMC";
+            client.Body = pMensagem;
+            client.IsBodyHtml = true;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = ("smtp.gmail.com");
+            smtp.Port = 587;
+            smtp.Credentials = new System.Net.NetworkCredential("EMAIL REMETENTE", "SENHA REMETENTE");
+            smtp.EnableSsl = true;
+            smtp.Send(client);
 
 
-
-        MailMessage mail = new MailMessage(); //cria uma mensagem de email..
-            mail.From = new MailAddress("trabalhoSD@gmail.com");
-            mail.To.Add(recbEmail);    // Configurações das contas de envio e recebimento 
-
-            //definição do conteudo 
-            mail.Subject = "Este é um simples, muito simples email";
-            mail.Body = (textoRecb);
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-            smtp.Send(mail);
         }
 
         [WebMethod(Description = "Calcula IMC")]
@@ -165,25 +170,25 @@ namespace Webservice_IMC
                     if (pImc > 15 && pImc <= 17.9)
                     {
 
-                        EnviaEmail(email, "Parabens você tem Baixo Indice de Massa Corporea");
+                        MandaEmail(email, "Parabens você tem Baixo Indice de Massa Corporea");
 
                     }
                     else if (pImc >= 18 && pImc <= 24.4)
                     {
 
-                        EnviaEmail(email, "Você esta com Indice de Massa Corporea dentro Ideal");
+                        MandaEmail(email, "Você esta com Indice de Massa Corporea dentro Ideal");
 
                     }
 
                     else if (pImc >= 24.5 && pImc <= 27.2)
                     {
 
-                        EnviaEmail(email, "Você esta com Indice de Massa Corporea com Risco Moderado ja pensou em procurar um nutricionista ou fazer atividades fisicas regularmente");
+                        MandaEmail(email, "Você esta com Indice de Massa Corporea com Risco Moderado ja pensou em procurar um nutricionista ou fazer atividades fisicas regularmente");
 
                     }
                     else if  (pImc >= 27.3)
                     {
-                        EnviaEmail(email, "Você esta com Indice de Massa Corporea com Risco Elevado procure um nutricionista e inicie atividades fisicas regularmente urgentemente");
+                        MandaEmail(email, "Você esta com Indice de Massa Corporea com Risco Elevado procure um nutricionista e inicie atividades fisicas regularmente urgentemente");
 
                     } break;
 
@@ -191,25 +196,25 @@ namespace Webservice_IMC
                     if (pImc > 17.9 && pImc <= 18.9)
                     {
 
-                        EnviaEmail(email, "Parabens você tem Baixo Indice de Massa Corporea");
+                        MandaEmail(email, "Parabens você tem Baixo Indice de Massa Corporea");
 
                     }
                     else if (pImc >= 19 && pImc <= 24.9)
                     {
 
-                        EnviaEmail(email, "Você esta com Indice de Massa Corporea dentro Ideal");
+                        MandaEmail(email, "Você esta com Indice de Massa Corporea dentro Ideal");
 
                     }
 
                     else if (pImc >= 25 && pImc <= 27.7)
                     {
 
-                        EnviaEmail(email, "Você esta com Indice de Massa Corporea com Risco Moderado ja pensou em procurar um nutricionista ou fazer atividades fisicas regularmente");
+                        MandaEmail(email, "Você esta com Indice de Massa Corporea com Risco Moderado ja pensou em procurar um nutricionista ou fazer atividades fisicas regularmente");
 
                     }
                     else if (pImc >= 27.8)
                     {
-                        EnviaEmail(email, "Você esta com Indice de Massa Corporea com Risco Elevado procure um nutricionista e inicie atividades fisicas regularmente urgentemente");
+                        MandaEmail(email, "Você esta com Indice de Massa Corporea com Risco Elevado procure um nutricionista e inicie atividades fisicas regularmente urgentemente");
 
                     }
                     break;
