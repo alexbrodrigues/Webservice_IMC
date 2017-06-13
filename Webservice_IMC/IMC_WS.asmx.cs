@@ -169,6 +169,14 @@ namespace Webservice_IMC
                 Double pAltura2 = (pAltura * pAltura);
                 Double pImc = (pPeso / pAltura2);
 
+                connection.Open();
+
+              
+                SqlDataAdapter add = new SqlDataAdapter("INSERT INTO IMC (IMC,fk_idPessoa) VALUES(@IMC, @fk_idPessoa)", connection);
+                add.SelectCommand.Parameters.Add("@IMC", SqlDbType.Decimal).Value = pImc;
+                add.SelectCommand.Parameters.Add("@fk_idPessoa", SqlDbType.Int).Value = idPessoa;
+
+
                 string pNome = Convert.ToString(dtTable.Rows[0]["nomeCompleto"]); 
                 string pSexo = Convert.ToString(dtTable.Rows[0]["sexo"]); 
                 string pCPF = Convert.ToString(dtTable.Rows[0]["cpf"]); 
