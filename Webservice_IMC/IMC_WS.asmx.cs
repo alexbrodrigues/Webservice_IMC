@@ -23,7 +23,7 @@ namespace Webservice_IMC
 
         public SqlConnection connection = new SqlConnection(@"Data Source=VM-ALEX\SQLSERVER2008R2;Initial Catalog=DB_IMC;Persist Security Info=True;User ID=users3i;Password=users3i");
 
-        [WebMethod]
+        [WebMethod(Description ="Efetua a inclusão das informações da Pessoa no banco de dados")]
         public void incluirDados(string nomeCompleto,DateTime dataNascimento ,string sexo, string cpf, string rg, Double peso, Double altura, string email,string etnia, int ativoExercicio, int ativoNutricionista, string logradouro, string numero , string complemento, string bairro , string municipio, string estado , string pais, string cep)
         {
             connection.Open();
@@ -71,7 +71,7 @@ namespace Webservice_IMC
             }
         }
 
-        [WebMethod]
+        [WebMethod(Description = "Altera os dados da Pessoa no banco de dados")]
         public void alterarDados(int idPessoa, string nomeCompleto, DateTime dataNascimento, string sexo, string cpf, string rg, Double peso, Double altura, string email, string etnia, int ativoExercicio, int ativoNutricionista, string logradouro, string numero, string complemento, string bairro, string municipio, string estado, string pais, string cep)
         {
             connection.Open();
@@ -146,15 +146,14 @@ namespace Webservice_IMC
 
         }
 
-        [WebMethod(Description = "Calcular  IMC")]
-        public void CalculoIMC(int idPessoa)
+        [WebMethod(Description = "Envia o IMC com Mensagem para Pessoa")]
+        public void EnvioIMC(int idPessoa)
         {
             connection.Open();
 
             DataSet ds = new DataSet();
 
             SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM Pessoa WHERE idPessoa = @id", connection);
-
             ad.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = idPessoa;
 
             try
@@ -169,12 +168,10 @@ namespace Webservice_IMC
                 Double pAltura2 = (pAltura * pAltura);
                 Double pImc = (pPeso / pAltura2);
 
-                connection.Open();
-
-              
-                SqlDataAdapter add = new SqlDataAdapter("INSERT INTO IMC (IMC,fk_idPessoa) VALUES(@IMC, @fk_idPessoa)", connection);
-                add.SelectCommand.Parameters.Add("@IMC", SqlDbType.Decimal).Value = pImc;
-                add.SelectCommand.Parameters.Add("@fk_idPessoa", SqlDbType.Int).Value = idPessoa;
+                SqlCommand scmd1 = new SqlCommand("INSERT INTO IMC (IMC,fk_idPessoa) VALUES(@IMC, @fk_idPessoa)", connection);
+                scmd1.Parameters.AddWithValue("@IMC", pImc);
+                scmd1.Parameters.AddWithValue("@fk_idPessoa", idPessoa);
+                scmd1.ExecuteNonQuery();
 
 
                 string pNome = Convert.ToString(dtTable.Rows[0]["nomeCompleto"]); 
@@ -220,7 +217,7 @@ namespace Webservice_IMC
                         {
                             if (pratikExerc == 0 && visitNutri == 0)
                             {
-                                MandaEmail(pEmail, "O seu IMC é " + pImc + ", você esta no peso ideal, já pensou em procurar o Nutricionista e começar a praticar exercicios? Cuidado Anorexia Mata rs!");
+                                MandaEmail(pEmail, "O seu IMC é " + pImc + ", você esta no peso ideal, Parabéns  mas praticar exerccios e uma alimentação adequada irão mante-lo bem mais saudavel !");
                             }
                             else
                             {

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="incluirDados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nomeCompleto" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataNascimento" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="sexo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cpf" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rg" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="altura" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="etnia" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ativoExercicio" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ativoNutricionista" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="logradouro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="complemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bairro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="municipio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pais" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cep" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="incluirDadosResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="alterarDados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idPessoa" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nomeCompleto" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataNascimento" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="sexo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cpf" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rg" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="altura" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="etnia" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ativoExercicio" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ativoNutricionista" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="logradouro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="complemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bairro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="municipio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pais" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cep" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="alterarDadosResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertIMC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pImc" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="idPessoa" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertIMCResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="EnvioIMC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idPessoa" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioIMCResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="incluirDadosSoapIn">
+    <wsdl:part name="parameters" element="tns:incluirDados" />
+  </wsdl:message>
+  <wsdl:message name="incluirDadosSoapOut">
+    <wsdl:part name="parameters" element="tns:incluirDadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="alterarDadosSoapIn">
+    <wsdl:part name="parameters" element="tns:alterarDados" />
+  </wsdl:message>
+  <wsdl:message name="alterarDadosSoapOut">
+    <wsdl:part name="parameters" element="tns:alterarDadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertIMCSoapIn">
+    <wsdl:part name="parameters" element="tns:insertIMC" />
+  </wsdl:message>
+  <wsdl:message name="insertIMCSoapOut">
+    <wsdl:part name="parameters" element="tns:insertIMCResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnvioIMCSoapIn">
+    <wsdl:part name="parameters" element="tns:EnvioIMC" />
+  </wsdl:message>
+  <wsdl:message name="EnvioIMCSoapOut">
+    <wsdl:part name="parameters" element="tns:EnvioIMCResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMC_WSSoap">
+    <wsdl:operation name="incluirDados">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Efetua a inclusão das informações da Pessoa no banco de dados</wsdl:documentation>
+      <wsdl:input message="tns:incluirDadosSoapIn" />
+      <wsdl:output message="tns:incluirDadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="alterarDados">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Altera os dados da Pessoa no banco de dados</wsdl:documentation>
+      <wsdl:input message="tns:alterarDadosSoapIn" />
+      <wsdl:output message="tns:alterarDadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertIMC">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Insere IMC no banco</wsdl:documentation>
+      <wsdl:input message="tns:insertIMCSoapIn" />
+      <wsdl:output message="tns:insertIMCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnvioIMC">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Envia o IMC com Mensagem para Pessoa</wsdl:documentation>
+      <wsdl:input message="tns:EnvioIMCSoapIn" />
+      <wsdl:output message="tns:EnvioIMCSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IMC_WSSoap" type="tns:IMC_WSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="incluirDados">
+      <soap:operation soapAction="http://tempuri.org/incluirDados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="alterarDados">
+      <soap:operation soapAction="http://tempuri.org/alterarDados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertIMC">
+      <soap:operation soapAction="http://tempuri.org/insertIMC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioIMC">
+      <soap:operation soapAction="http://tempuri.org/EnvioIMC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IMC_WSSoap12" type="tns:IMC_WSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="incluirDados">
+      <soap12:operation soapAction="http://tempuri.org/incluirDados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="alterarDados">
+      <soap12:operation soapAction="http://tempuri.org/alterarDados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertIMC">
+      <soap12:operation soapAction="http://tempuri.org/insertIMC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioIMC">
+      <soap12:operation soapAction="http://tempuri.org/EnvioIMC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IMC_WS">
+    <wsdl:port name="IMC_WSSoap" binding="tns:IMC_WSSoap">
+      <soap:address location="http://localhost:6536/IMC_WS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IMC_WSSoap12" binding="tns:IMC_WSSoap12">
+      <soap12:address location="http://localhost:6536/IMC_WS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -31,7 +31,7 @@ namespace Webservice_IMC {
         protected global::System.Web.UI.WebControls.Label Labeltitulo;
         
         /// <summary>
-        /// labelNome control
+        /// labelNome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -58,40 +58,31 @@ namespace Webservice_IMC {
         protected global::System.Web.UI.WebControls.Label labelDatanascimento;
         
         /// <summary>
-        /// textboxDatanascimento control.
+        /// Calendar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxDatanascimento;
+        protected global::System.Web.UI.WebControls.Calendar Calendar1;
         
         /// <summary>
-        /// labelSexo control.
+        /// label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelSexo;
+        protected global::System.Web.UI.WebControls.Label label1;
         
         /// <summary>
-        /// radioMasculino control.
+        /// RadioButtonListSexo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radioMasculino;
-        
-        /// <summary>
-        /// radioFeminino control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radioFeminino;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListSexo;
         
         /// <summary>
         /// labelCPF control.
@@ -211,22 +202,13 @@ namespace Webservice_IMC {
         protected global::System.Web.UI.WebControls.Label labelAtivoExercicio;
         
         /// <summary>
-        /// radiobuttonExercicioSim control.
+        /// RadioButtonListExercicios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radiobuttonExercicioSim;
-        
-        /// <summary>
-        /// radiobuttonExercicioNao control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radiobuttonExercicioNao;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListExercicios;
         
         /// <summary>
         /// labelNutricionista control.
@@ -238,22 +220,13 @@ namespace Webservice_IMC {
         protected global::System.Web.UI.WebControls.Label labelNutricionista;
         
         /// <summary>
-        /// radiobuttonNutriSim control.
+        /// RadioButtonListNutricionista control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radiobuttonNutriSim;
-        
-        /// <summary>
-        /// radiobuttonnutriNao control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radiobuttonnutriNao;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListNutricionista;
         
         /// <summary>
         /// labeltituloEnderecos control.

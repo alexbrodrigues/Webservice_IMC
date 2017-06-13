@@ -18,7 +18,38 @@ namespace Webservice_IMC
 
         protected void BtEnviar_Click(object sender, EventArgs e)
         {
-            
+            localhost.IMC_WS IMC = new localhost.IMC_WS();
+            string Nome = textboxNome.Text;
+            DateTime Data = Calendar1.SelectedDate.Date;
+            string Sexo = RadioButtonListSexo.Text;
+            string Cpf = textboxCPF.Text;
+            string Rg = textboxRG.Text;
+            Double Peso = Double.Parse(textboxPeso.Text);
+            Double Altura = Double.Parse(textboxAltura.Text);
+            string Email = textboxEmail.Text;
+            string Etnia = textboxEtnia.Text;
+            int AtivoExercicio = Int32.Parse(RadioButtonListExercicios.Text);
+            int AtivoNutricionista = Int32.Parse(RadioButtonListNutricionista.Text);
+            string Logradouro = textboxLogradouro.Text;
+            string Numero = textboxNumero.Text;
+            string Complemento = textboxComplemento.Text;
+            string Bairro = textboxBairro.Text;
+            string Municipio = textboxMunicipio.Text;
+            string Estado = textboxEstado.Text;
+            string Pais = textboxPais.Text;
+            string CEP = textboxCEP.Text;
+
+             IMC.incluirDados(Nome, Data, Sexo, Cpf, Rg,Peso, Altura, Email, Etnia, AtivoExercicio, AtivoNutricionista, Logradouro, Numero, Complemento,Bairro, Municipio, Estado, Pais, CEP);
+        }
+
+        protected void BtLimpar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void drpSexo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
