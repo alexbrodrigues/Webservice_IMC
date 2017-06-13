@@ -180,20 +180,63 @@ namespace Webservice_IMC
                 switch (pSexo)
                 {
                     case "Feminino":
-                        if (pImc > 15 && pImc <= 17.9)
+                        if (pImc <= 19.1)
                         {
-
-                            MandaEmail(pEmail, "Parabens você tem Baixo Indice de Massa Corporea");
-
+                            if (pratikExerc == 0 && visitNutri == 0)
+                            {
+                                MandaEmail(pEmail, "O seu IMC é " + pImc + ", você tem você esta abaixo do peso ideal, já pensou em procurar o Nutricionista e começar a praticar exercicios? Cuidado Anorexia Mata rs!");
+                            }
+                            else
+                            {
+                                if (pratikExerc == 0 && visitNutri == 1)
+                                {
+                                    MandaEmail(pEmail, "O seu IMC é " + pImc + ", você  esta abaixo do peso ideal, você esta começando a ir pelo caminho certol ao ir regularmente ao Nutricionista, mas um exercicio fisico te ajudaria a chegar ao peso ideal !");
+                                }
+                                else
+                                {
+                                    if (pratikExerc == 1 && visitNutri == 0)
+                                    {
+                                        MandaEmail(pEmail, "O seu IMC é " + pImc + ", você esta abaixo do peso ideal, você esta começando a ir pelo caminho certl ao fazer regularmente exercicios fisicos, mas você deveria ir ao Nutricionista isso te ajudaria a chegar ao peso ideal !");
+                                    }
+                                    else
+                                    {
+                                        if (pratikExerc == 1 && visitNutri == 1)
+                                        {
+                                            MandaEmail(pEmail, "O seu IMC é " + pImc + ", você esta abaixo do peso ideal, você esta começando no caminho certo ao fazer regularmente exercicios fisicos e ir regurlamente ao Nutricionista, espere mais um pouco e estará no peso ideal !");
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        else if (pImc >= 18 && pImc <= 24.4)
+                        else if (pImc >= 19.1 && pImc <= 25.8)
                         {
-
-                            MandaEmail(pEmail, "Você esta com Indice de Massa Corporea dentro Ideal");
-
+                            if (pratikExerc == 0 && visitNutri == 0)
+                            {
+                                MandaEmail(pEmail, "O seu IMC é " + pImc + ", você esta no peso ideal, já pensou em procurar o Nutricionista e começar a praticar exercicios? Cuidado Anorexia Mata rs!");
+                            }
+                            else
+                            {
+                                if (pratikExerc == 0 && visitNutri == 1)
+                                {
+                                    MandaEmail(pEmail, "O seu IMC é " + pImc + ",você esta no peso ideal, você esta começando a ir pelo caminho certol ao ir regularmente ao Nutricionista, mas um exercicio fisico te ajudaria a chegar ao peso ideal !");
+                                }
+                                else
+                                {
+                                    if (pratikExerc == 1 && visitNutri == 0)
+                                    {
+                                        MandaEmail(pEmail, "O seu IMC é " + pImc + ", você esta no peso ideal, você esta começando a ir pelo caminho certl ao fazer regularmente exercicios fisicos, mas você deveria ir ao Nutricionista isso te ajudaria a chegar ao peso ideal !");
+                                    }
+                                    else
+                                    {
+                                        if (pratikExerc == 1 && visitNutri == 1)
+                                        {
+                                            MandaEmail(pEmail, "O seu IMC é " + pImc + ", você esta no peso ideal, você esta começando no caminho certo ao fazer regularmente exercicios fisicos e ir regurlamente ao Nutricionista, espere mais um pouco e estará no peso ideal !");
+                                        }
+                                    }
+                                }
+                            }
                         }
-
-                        else if (pImc >= 24.5 && pImc <= 27.2)
+                        else if (pImc >= 25.9 && pImc <= 27.3)
                         {
 
                             MandaEmail(pEmail, "Você esta com Indice de Massa Corporea com Risco Moderado ja pensou em procurar um nutricionista ou fazer atividades fisicas regularmente");
