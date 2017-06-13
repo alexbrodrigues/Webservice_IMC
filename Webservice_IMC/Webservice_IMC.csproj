@@ -53,6 +53,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Theme1\StyleSheet1.css" />
     <Content Include="IMC_WS.asmx" />
     <Content Include="Tela_Cadastro.aspx" />
     <None Include="Properties\Settings.settings">

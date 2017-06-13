@@ -1,0 +1,79 @@
+﻿.topo{
+
+border-style: solid;
+
+border-width:thin;
+
+border-color: Black;
+
+width: 780px;
+
+height: 80px;
+
+background-color: Transparent;
+
+}
+
+.esquerda
+
+{
+
+border-style: solid;
+
+border-width:thin;
+
+border-color: Black;
+
+float: left;
+
+width: 80px;
+
+height: 300px;
+
+margin-top: 2px;
+
+}
+
+.direita
+
+{
+
+border-style: solid;
+
+border-width:thin;
+
+border-color: Black;
+
+float: left;
+
+width: 696px;
+
+height: 300px;
+
+margin-top: 2px;
+
+margin-left: 2px;
+
+}
+.title
+{
+font-family: Verdana, Helvetica, sans-serif;
+font-size: 14px
+}
+.dropdownmenu
+{
+font-family: Arial;
+background-color: #FFE0C0;
+}
+.textbox
+{
+font-family: Arial;
+background-color: #FFFFC0;
+border: 1px solid
+}
+.button
+{
+font-family: Arial;
+background-color: #E0E0E0;
+border: 1px solid
+}

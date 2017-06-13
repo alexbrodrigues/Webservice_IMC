@@ -5,17 +5,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="C:\Users\ALEX\Source\Repos\Webservice_IMC\Webservice_IMC\App_Themes\Theme1\StyleSheet1.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        #form1 {
+            width: 891px;
+        }
+    </style>
 </head>
-<body>
+<body style="width: 892px; height: 22px">
     <form id="form1" runat="server">
-     <fieldset>
-    <div>
-    <asp:Label ID="Labeltitulo" runat="server" Text="Tela de Cadastro"></asp:Label>
+        <fieldset class="title" aria-readonly="True" style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style: italic; font-variant: normal; text-transform: uppercase; color: #000000; border: thin solid #C0C0C0; position: absolute; z-index: inherit; background-color: #FFFFFF; width: 907px; height: 42px; top: 1px; left: 2px;">
+            <br />
+            <asp:Label ID="Labeltitulo" runat="server" Text="Tela de Cadastro"></asp:Label>
+        </fieldset>
+    <fieldset style="border: thin solid #C0C0C0; position: absolute; z-index: inherit; width: 908px; height: 1300px; top: 50px; left: 2px; margin-right: 3px;">
         <br />
-        <br />
-        <br />
-        <asp:Label ID="labelNome" runat="server" Text="Nome: "></asp:Label>
-        <asp:TextBox ID="textboxNome" runat="server"  Width="674px"></asp:TextBox>
+           <asp:Label ID="labelNome" runat="server" Text="Nome: "></asp:Label>
+        <asp:TextBox ID="textboxNome" runat="server" CssClass="textbox"  Width="674px"></asp:TextBox>
         <br />
         <br />
         <asp:Label ID="labelDatanascimento" runat="server" Text="Data de Nascimento:"></asp:Label>
@@ -66,7 +72,6 @@
             <asp:ListItem Value="1">Sim</asp:ListItem>
             <asp:ListItem Value="0">Não</asp:ListItem>
         </asp:RadioButtonList>
-
         <br />
         <br />
         <asp:Label ID="labeltituloEnderecos" runat="server" Text="Endereço"></asp:Label>
@@ -108,9 +113,7 @@
         <asp:Button ID="BtEnviar" runat="server" Text="Enviar" OnClick="BtEnviar_Click" />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
         <asp:Button ID="BtLimpar" runat="server" OnClick="BtLimpar_Click" Text="Limpar" />
-        
-    </div>
-         </fieldset>
+         </fieldset>     
     </form>
 </body>
 </html>
