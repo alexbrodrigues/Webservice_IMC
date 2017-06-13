@@ -145,8 +145,7 @@ namespace Webservice_IMC
 
         }
 
-        [WebMethod(Description = "Calcula IMC")]
-
+        /*[WebMethod(Description = "Calcula IMC")]
         public void CalculaImC(int idPessoa, string nomeCompleto, DateTime dataNascimento, string sexo, string cpf, string rg, Double peso, Double altura, string email, string etnia, int ativoExercicio, int ativoNutricionista, string logradouro, string numero, string complemento, string bairro, string municipio, string estado, string pais, string cep)
         {
             string pNome = nomeCompleto;
@@ -218,6 +217,111 @@ namespace Webservice_IMC
                     }
                     break;
             }    
-    }
+    }*/
+        [WebMethod(Description = "Calcular  IMC")]
+        public void CalculoIMC(int idPessoa)
+        {
+            connection.Open();
+
+            DataSet ds = new DataSet();
+
+            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM Pessoa WHERE idPessoa = @id", connection);
+
+            ad.SelectCommand.Parameters.Add("@id", SqlDbType.Int).Value = idPessoa;
+
+            try
+            {
+                ad.Fill(ds);
+
+                DataTable dtTable = ds.Tables[0];
+
+                Double pPeso = Convert.ToDouble(dtTable.Rows[0]["peso"]);
+                Double pAltura =Convert.ToDouble(dtTable.Rows[0]["altura"]);
+                
+                Double pAltura2 = (pAltura * pAltura);
+                Double pImc = (pPeso / pAltura2);
+
+                string pNome = Convert.ToString(dtTable.Rows[0]["nomeCompleto"]); 
+                string pSexo = Convert.ToString(dtTable.Rows[0]["sexo"]); 
+                string pCPF = Convert.ToString(dtTable.Rows[0]["cpf"]); 
+                string pRG = Convert.ToString(dtTable.Rows[0]["rg"]); 
+                string pEmail = Convert.ToString(dtTable.Rows[0]["email"]); 
+                int pratikExerc = Convert.ToInt32(dtTable.Rows[0]["ativoExercicio"]);  //1 = sim; 0 = não
+                int visitNutri = Convert.ToInt32(dtTable.Rows[0]["aivoNutricionista"]);  //1 = sim; 0 = não
+
+                switch (pSexo)
+                {
+                    case "Feminino":
+                        if (pImc > 15 && pImc <= 17.9)
+                        {
+
+                            MandaEmail(pEmail, "Parabens você tem Baixo Indice de Massa Corporea");
+
+                        }
+                        else if (pImc >= 18 && pImc <= 24.4)
+                        {
+
+                            MandaEmail(pEmail, "Você esta com Indice de Massa Corporea dentro Ideal");
+
+                        }
+
+                        else if (pImc >= 24.5 && pImc <= 27.2)
+                        {
+
+                            MandaEmail(pEmail, "Você esta com Indice de Massa Corporea com Risco Moderado ja pensou em procurar um nutricionista ou fazer atividades fisicas regularmente");
+
+                        }
+                        else if (pImc >= 27.3)
+                        {
+                            MandaEmail(pEmail, "Você esta com Indice de Massa Corporea com Risco Elevado procure um nutricionista e inicie atividades fisicas regularmente urgentemente");
+
+                        }
+                        break;
+
+                    case "Masculino":
+                        if (pImc > 17.9 && pImc <= 18.9)
+                        {
+
+                            MandaEmail(pEmail, "Parabens você tem Baixo Indice de Massa Corporea");
+
+                        }
+                        else if (pImc >= 19 && pImc <= 24.9)
+                        {
+
+                            MandaEmail(pEmail, "Você esta com Indice de Massa Corporea dentro Ideal");
+
+                        }
+
+                        else if (pImc >= 25 && pImc <= 27.7)
+                        {
+
+                            MandaEmail(pEmail, "Você esta com Indice de Massa Corporea com Risco Moderado ja pensou em procurar um nutricionista ou fazer atividades fisicas regularmente");
+
+                        }
+                        else if (pImc >= 27.8)
+                        {
+                            MandaEmail(pEmail, "Você esta com Indice de Massa Corporea com Risco Elevado procure um nutricionista e inicie atividades fisicas regularmente urgentemente");
+
+                        }
+                        break;
+                }
+
+                }
+            catch (SqlException ex)
+            {
+                throw new Exception("ERRO BANCO DE DADOS: " + ex.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO RUNTIME: " + ex.Message.ToString());
+            }
+            finally
+            {
+                connection.Close();
+                connection.Dispose();
+                ad.Dispose();
+            }
+        }
+
     }
 }
