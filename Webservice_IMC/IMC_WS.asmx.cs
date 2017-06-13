@@ -121,7 +121,7 @@ namespace Webservice_IMC
             }
         }
 
-        [WebMethod]
+       
         public void MandaEmail(string recbEmail, string textoRecb)
         {
 
@@ -129,7 +129,7 @@ namespace Webservice_IMC
             string pEmailDestino = recbEmail;
 
             MailMessage client = new MailMessage();
-            client.From = new MailAddress("COLOCAR EMAIL DE ENVIO");
+            client.From = new MailAddress("abresistemas@gmail.com");
             client.To.Add(new MailAddress(pEmailDestino));
             client.Subject = "Calculo IMC";
             client.Body = pMensagem;
@@ -138,86 +138,14 @@ namespace Webservice_IMC
             SmtpClient smtp = new SmtpClient();
             smtp.Host = ("smtp.gmail.com");
             smtp.Port = 587;
-            smtp.Credentials = new System.Net.NetworkCredential("EMAIL REMETENTE", "SENHA REMETENTE");
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("abresistemas@gmail.com", "V!vo2013");
             smtp.EnableSsl = true;
             smtp.Send(client);
 
 
         }
 
-        /*[WebMethod(Description = "Calcula IMC")]
-        public void CalculaImC(int idPessoa, string nomeCompleto, DateTime dataNascimento, string sexo, string cpf, string rg, Double peso, Double altura, string email, string etnia, int ativoExercicio, int ativoNutricionista, string logradouro, string numero, string complemento, string bairro, string municipio, string estado, string pais, string cep)
-        {
-            string pNome = nomeCompleto;
-            string pSexo = sexo;
-            string pCPF = cpf;
-            string pRG = rg;
-            string pEmail = email;
-            int pratikExerc = ativoExercicio; //1 = sim; 0 = não
-            int visitNutri = ativoNutricionista;   //1 = sim; 0 = não
-
-            Double pPeso = peso;
-            Double pAltura = altura;
-            Double pAltura2 = (altura * altura);
-            Double pImc = (peso / pAltura2);
-        //string msg;
-
-
-            switch (sexo) {
-                case "Feminino":
-                    if (pImc > 15 && pImc <= 17.9)
-                    {
-
-                        MandaEmail(email, "Parabens você tem Baixo Indice de Massa Corporea");
-
-                    }
-                    else if (pImc >= 18 && pImc <= 24.4)
-                    {
-
-                        MandaEmail(email, "Você esta com Indice de Massa Corporea dentro Ideal");
-
-                    }
-
-                    else if (pImc >= 24.5 && pImc <= 27.2)
-                    {
-
-                        MandaEmail(email, "Você esta com Indice de Massa Corporea com Risco Moderado ja pensou em procurar um nutricionista ou fazer atividades fisicas regularmente");
-
-                    }
-                    else if  (pImc >= 27.3)
-                    {
-                        MandaEmail(email, "Você esta com Indice de Massa Corporea com Risco Elevado procure um nutricionista e inicie atividades fisicas regularmente urgentemente");
-
-                    } break;
-
-                case "Masculino":
-                    if (pImc > 17.9 && pImc <= 18.9)
-                    {
-
-                        MandaEmail(email, "Parabens você tem Baixo Indice de Massa Corporea");
-
-                    }
-                    else if (pImc >= 19 && pImc <= 24.9)
-                    {
-
-                        MandaEmail(email, "Você esta com Indice de Massa Corporea dentro Ideal");
-
-                    }
-
-                    else if (pImc >= 25 && pImc <= 27.7)
-                    {
-
-                        MandaEmail(email, "Você esta com Indice de Massa Corporea com Risco Moderado ja pensou em procurar um nutricionista ou fazer atividades fisicas regularmente");
-
-                    }
-                    else if (pImc >= 27.8)
-                    {
-                        MandaEmail(email, "Você esta com Indice de Massa Corporea com Risco Elevado procure um nutricionista e inicie atividades fisicas regularmente urgentemente");
-
-                    }
-                    break;
-            }    
-    }*/
         [WebMethod(Description = "Calcular  IMC")]
         public void CalculoIMC(int idPessoa)
         {
@@ -247,7 +175,7 @@ namespace Webservice_IMC
                 string pRG = Convert.ToString(dtTable.Rows[0]["rg"]); 
                 string pEmail = Convert.ToString(dtTable.Rows[0]["email"]); 
                 int pratikExerc = Convert.ToInt32(dtTable.Rows[0]["ativoExercicio"]);  //1 = sim; 0 = não
-                int visitNutri = Convert.ToInt32(dtTable.Rows[0]["aivoNutricionista"]);  //1 = sim; 0 = não
+                int visitNutri = Convert.ToInt32(dtTable.Rows[0]["ativoNutricionista"]);  //1 = sim; 0 = não
 
                 switch (pSexo)
                 {
