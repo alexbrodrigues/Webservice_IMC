@@ -20,6 +20,7 @@ namespace Webservice_IMC.localhost {
     using System.Web.Services.Protocols;
     using System.Xml.Serialization;
     using System.ComponentModel;
+    using System.Data;
     
     
     /// <remarks/>
@@ -29,11 +30,11 @@ namespace Webservice_IMC.localhost {
     [System.Web.Services.WebServiceBindingAttribute(Name="IMC_WSSoap", Namespace="http://tempuri.org/")]
     public partial class IMC_WS : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback getPessoaOperationCompleted;
+        
         private System.Threading.SendOrPostCallback incluirDadosOperationCompleted;
         
         private System.Threading.SendOrPostCallback alterarDadosOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback insertIMCOperationCompleted;
         
         private System.Threading.SendOrPostCallback EnvioIMCOperationCompleted;
         
@@ -76,20 +77,47 @@ namespace Webservice_IMC.localhost {
         }
         
         /// <remarks/>
+        public event getPessoaCompletedEventHandler getPessoaCompleted;
+        
+        /// <remarks/>
         public event incluirDadosCompletedEventHandler incluirDadosCompleted;
         
         /// <remarks/>
         public event alterarDadosCompletedEventHandler alterarDadosCompleted;
         
         /// <remarks/>
-        public event insertIMCCompletedEventHandler insertIMCCompleted;
-        
-        /// <remarks/>
         public event EnvioIMCCompletedEventHandler EnvioIMCCompleted;
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getPessoa", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getPessoa() {
+            object[] results = this.Invoke("getPessoa", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getPessoaAsync() {
+            this.getPessoaAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getPessoaAsync(object userState) {
+            if ((this.getPessoaOperationCompleted == null)) {
+                this.getPessoaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetPessoaOperationCompleted);
+            }
+            this.InvokeAsync("getPessoa", new object[0], this.getPessoaOperationCompleted, userState);
+        }
+        
+        private void OngetPessoaOperationCompleted(object arg) {
+            if ((this.getPessoaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getPessoaCompleted(this, new getPessoaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/incluirDados", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void incluirDados(
+        public int incluirDados(
                     string nomeCompleto, 
                     System.DateTime dataNascimento, 
                     string sexo, 
@@ -109,7 +137,7 @@ namespace Webservice_IMC.localhost {
                     string estado, 
                     string pais, 
                     string cep) {
-            this.Invoke("incluirDados", new object[] {
+            object[] results = this.Invoke("incluirDados", new object[] {
                         nomeCompleto,
                         dataNascimento,
                         sexo,
@@ -129,6 +157,7 @@ namespace Webservice_IMC.localhost {
                         estado,
                         pais,
                         cep});
+            return ((int)(results[0]));
         }
         
         /// <remarks/>
@@ -205,7 +234,7 @@ namespace Webservice_IMC.localhost {
         private void OnincluirDadosOperationCompleted(object arg) {
             if ((this.incluirDadosCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.incluirDadosCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.incluirDadosCompleted(this, new incluirDadosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -337,36 +366,6 @@ namespace Webservice_IMC.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insertIMC", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void insertIMC(double pImc, int idPessoa) {
-            this.Invoke("insertIMC", new object[] {
-                        pImc,
-                        idPessoa});
-        }
-        
-        /// <remarks/>
-        public void insertIMCAsync(double pImc, int idPessoa) {
-            this.insertIMCAsync(pImc, idPessoa, null);
-        }
-        
-        /// <remarks/>
-        public void insertIMCAsync(double pImc, int idPessoa, object userState) {
-            if ((this.insertIMCOperationCompleted == null)) {
-                this.insertIMCOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertIMCOperationCompleted);
-            }
-            this.InvokeAsync("insertIMC", new object[] {
-                        pImc,
-                        idPessoa}, this.insertIMCOperationCompleted, userState);
-        }
-        
-        private void OninsertIMCOperationCompleted(object arg) {
-            if ((this.insertIMCCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.insertIMCCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/EnvioIMC", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void EnvioIMC(int idPessoa) {
             this.Invoke("EnvioIMC", new object[] {
@@ -415,15 +414,59 @@ namespace Webservice_IMC.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void incluirDadosCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void getPessoaCompletedEventHandler(object sender, getPessoaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getPessoaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getPessoaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void incluirDadosCompletedEventHandler(object sender, incluirDadosCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class incluirDadosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal incluirDadosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void alterarDadosCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void insertIMCCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]

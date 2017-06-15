@@ -23,13 +23,46 @@ namespace Webservice_IMC
 
         public SqlConnection connection = new SqlConnection(@"Data Source=VM-ALEX\SQLSERVER2008R2;Initial Catalog=DB_IMC;Persist Security Info=True;User ID=users3i;Password=users3i");
 
-        [WebMethod(Description ="Efetua a inclusão das informações da Pessoa no banco de dados")]
-        public void incluirDados(string nomeCompleto,DateTime dataNascimento ,string sexo, string cpf, string rg, Double peso, Double altura, string email,string etnia, int ativoExercicio, int ativoNutricionista, string logradouro, string numero , string complemento, string bairro , string municipio, string estado , string pais, string cep)
+        [WebMethod]
+        public DataSet getPessoa()
         {
+
             connection.Open();
 
             DataSet ds = new DataSet();
-            SqlDataAdapter ad = new SqlDataAdapter("INSERT INTO Pessoa (nomeCompleto, dataNascimento, sexo, cpf, rg, peso,altura,email,etnia,ativoExercicio,ativoNutricionista,logradouro, numero , complemento, bairro , municipio, estado , pais, cep) VALUES(@nomeCompleto, @dataNascimento, @sexo, @cpf, @rg, @peso,@altura,@email,@etnia,@ativoExercicio,@ativoNutricionista,@logradouro, @numero , @complemento, @bairro , @municipio, @estado , @pais, @cep)", connection);
+
+            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM PESSOA", connection);
+
+            try
+            {
+                ad.Fill(ds);
+                return ds;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("ERRO BANCO DE DADOS: " + ex.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERRO RUNTIME: " + ex.Message.ToString());
+            }
+            finally
+            {
+                connection.Close();
+                connection.Dispose();
+                ad.Dispose();
+            }
+        }
+
+        [WebMethod(Description ="Efetua a inclusão das informações da Pessoa no banco de dados")]
+        public int incluirDados(string nomeCompleto,DateTime dataNascimento ,string sexo, string cpf, string rg, Double peso, Double altura, string email,string etnia, int ativoExercicio, int ativoNutricionista, string logradouro, string numero , string complemento, string bairro , string municipio, string estado , string pais, string cep)
+        {
+            Int32 newIdPessoa = 0;
+            connection.Open();
+
+
+            SqlDataAdapter ad = new SqlDataAdapter("INSERT INTO Pessoa (nomeCompleto, dataNascimento, sexo, cpf, rg, peso,altura,email,etnia,ativoExercicio,ativoNutricionista,logradouro, numero , complemento, bairro , municipio, estado , pais, cep) VALUES(@nomeCompleto, @dataNascimento, @sexo, @cpf, @rg, @peso,@altura,@email,@etnia,@ativoExercicio,@ativoNutricionista,@logradouro, @numero , @complemento, @bairro , @municipio, @estado , @pais, @cep);"
+                + "SELECT CAST(scope_identity() AS int);", connection);
 
             ad.SelectCommand.Parameters.Add("@nomeCompleto", SqlDbType.VarChar, 250).Value = nomeCompleto;
             ad.SelectCommand.Parameters.Add("@dataNascimento", SqlDbType.Date, 11).Value = dataNascimento;
@@ -51,9 +84,12 @@ namespace Webservice_IMC
             ad.SelectCommand.Parameters.Add("@pais", SqlDbType.VarChar,100).Value = pais;
             ad.SelectCommand.Parameters.Add("@cep", SqlDbType.VarChar,8).Value = cep;
 
+            newIdPessoa = (Int32)ad.SelectCommand.ExecuteScalar();
+
             try
             {
-                ad.Fill(ds);
+                return newIdPessoa;
+
             }
             catch (SqlException ex)
             {

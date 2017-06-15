@@ -18,6 +18,7 @@ namespace Webservice_IMC
 
         protected void BtEnviar_Click(object sender, EventArgs e)
         {
+            int id = 0;
             localhost.IMC_WS IMC = new localhost.IMC_WS();
             string Nome = textboxNome.Text;
             DateTime Data = Calendar1.SelectedDate.Date;
@@ -39,7 +40,8 @@ namespace Webservice_IMC
             string Pais = textboxPais.Text;
             string CEP = textboxCEP.Text;
 
-             IMC.incluirDados(Nome, Data, Sexo, Cpf, Rg,Peso, Altura, Email, Etnia, AtivoExercicio, AtivoNutricionista, Logradouro, Numero, Complemento,Bairro, Municipio, Estado, Pais, CEP);
+           id = IMC.incluirDados(Nome, Data, Sexo, Cpf, Rg, Peso, Altura, Email, Etnia, AtivoExercicio, AtivoNutricionista, Logradouro, Numero, Complemento, Bairro, Municipio, Estado, Pais, CEP);
+           IMC.EnvioIMC(id);
         }
 
         protected void BtLimpar_Click(object sender, EventArgs e)

@@ -60,6 +60,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Tela_Inicial.aspx" />
     <None Include="Web References\localhost\IMC_WS.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -80,6 +81,13 @@
     </Compile>
     <Compile Include="Tela_Cadastro.aspx.designer.cs">
       <DependentUpon>Tela_Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tela_Inicial.aspx.cs">
+      <DependentUpon>Tela_Inicial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tela_Inicial.aspx.designer.cs">
+      <DependentUpon>Tela_Inicial.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -104,9 +112,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +126,9 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Webservice_IMC_localhost_IMC_WS</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
