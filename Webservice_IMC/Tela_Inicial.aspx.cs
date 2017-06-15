@@ -16,5 +16,11 @@ namespace Webservice_IMC
             this.grdDados.DataBind();
 
         }
+
+        protected void grdDados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Tela_Update update = new Tela_Update();
+            update.ShowDialog();
+        }
     }
 }

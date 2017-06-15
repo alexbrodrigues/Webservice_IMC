@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
     <div>
         <a runat="server" href="Tela_Cadastro.aspx">Cadastro de Pessoa</a>
-       <asp:GridView ID="grdDados" runat="server" AutoGenerateColumns="false" >
+       <asp:GridView ID="grdDados" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="grdDados_SelectedIndexChanged" >
         <Columns>        
             <asp:BoundField DataField="nomeCompleto" HeaderText="Nome Completo" />
             <asp:BoundField DataField="dataNascimento" HeaderText="Data de Nascimento" />

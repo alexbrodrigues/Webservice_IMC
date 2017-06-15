@@ -62,6 +62,7 @@
     </None>
     <Content Include="Tela_Inicial.aspx" />
     <None Include="Web References\localhost\IMC_WS.disco" />
+    <Content Include="Tela_Update.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +89,13 @@
     </Compile>
     <Compile Include="Tela_Inicial.aspx.designer.cs">
       <DependentUpon>Tela_Inicial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tela_Update.aspx.cs">
+      <DependentUpon>Tela_Update.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tela_Update.aspx.designer.cs">
+      <DependentUpon>Tela_Update.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
