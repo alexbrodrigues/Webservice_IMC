@@ -13,24 +13,6 @@ namespace Webservice_IMC {
     public partial class Tela_Cadastro {
         
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// Labeltitulo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labeltitulo;
-        
-        /// <summary>
         /// labelNome control.
         /// </summary>
         /// <remarks>
@@ -47,15 +29,6 @@ namespace Webservice_IMC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textboxNome;
-        
-        /// <summary>
-        /// labelDatanascimento control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelDatanascimento;
         
         /// <summary>
         /// Calendar1 control.

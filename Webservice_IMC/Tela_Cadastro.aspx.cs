@@ -46,12 +46,7 @@ namespace Webservice_IMC
 
         protected void BtLimpar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        protected void drpSexo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            Response.Redirect("Default.aspx");
         }
     }
 }

@@ -7,20 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace Webservice_IMC
 {
-	public partial class Tela_Update : System.Web.UI.Page
-	{
+    public partial class Site1 : System.Web.UI.MasterPage
+    {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
- 
-
-        protected void BtEnviar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void BtLimpar_Click(object sender, EventArgs e)
         {
 
         }

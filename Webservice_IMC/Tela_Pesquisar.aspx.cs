@@ -7,20 +7,18 @@ using System.Web.UI.WebControls;
 
 namespace Webservice_IMC
 {
-    public partial class Tela_Inicial : System.Web.UI.Page
+    public partial class Tela_Pesquisar : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             localhost.IMC_WS IMC = new localhost.IMC_WS();
-            this.grdDados.DataSource = IMC.getPessoa();
-            this.grdDados.DataBind();
-
+            this.gwPessoas.DataSource = IMC.getPessoa();
+            this.gwPessoas.DataBind();
         }
 
-        protected void grdDados_SelectedIndexChanged(object sender, EventArgs e)
+        protected void gwPessoas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Tela_Update update = new Tela_Update();
-            update.ShowDialog();
+
         }
     }
 }
