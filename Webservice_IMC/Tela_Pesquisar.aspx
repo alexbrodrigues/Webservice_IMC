@@ -3,7 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContent" runat="server">
-    <asp:GridView ID="gwPessoas" runat="server" AutoGenerateColumns="False"  EmptyDataText="Não Existem Pessoas Cadastradas...">
+    <br />
+    <h1>Pesquisar</h1>
+    <br />
+    <asp:GridView ID="gwPessoas" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True"  EmptyDataText="Não Existem Pessoas Cadastradas..." OnSelectedIndexChanged="gwPessoas_SelectedIndexChanged" OnRowUpdating="gwPessoas_RowEditing" >
         <Columns>        
             <asp:BoundField DataField="nomeCompleto" HeaderText="Nome Completo" />
             <asp:BoundField DataField="dataNascimento" HeaderText="Data de Nascimento" />
@@ -25,12 +28,20 @@
             <asp:BoundField DataField="pais" HeaderText="País" />
             <asp:BoundField DataField="cep" HeaderText="CEP" />
             <asp:BoundField DataField="idPessoa" HeaderText="Atualizar" Visible="False" />
-            <asp:TemplateField>
-            <ItemTemplate>
-                <asp:Button ID="btnEditar" runat="server" CommandName="Editar" Text="Editar Dados"/>
-            </ItemTemplate>
+                   
+   
+                    <asp:TemplateField ShowHeader="False">
+                        <EditItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Update"></asp:LinkButton>
+                            &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Editar" Text="Edit" OnClick="gwPessoas_RowEditing"></asp:LinkButton>
+                        </ItemTemplate>
             </asp:TemplateField>
-            
+                    
+     
+                    
                     </Columns>
     </asp:GridView> 
 </asp:Content>

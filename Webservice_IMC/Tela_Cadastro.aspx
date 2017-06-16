@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContent" runat="server">
     <br />
-    <h1>Tela de Cadastro</h1>
+    <h1>Cadastrar</h1>
     <br />
     <asp:Label ID="labelNome"  runat="server" Text="Nome: "></asp:Label>
     <asp:TextBox ID="textboxNome" runat="server" CssClass="radiusInput" ></asp:TextBox>

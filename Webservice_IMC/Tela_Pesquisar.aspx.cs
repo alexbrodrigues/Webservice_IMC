@@ -9,6 +9,7 @@ namespace Webservice_IMC
 {
     public partial class Tela_Pesquisar : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             localhost.IMC_WS IMC = new localhost.IMC_WS();
@@ -18,7 +19,17 @@ namespace Webservice_IMC
 
         protected void gwPessoas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            GridViewRow row = this.gwPessoas.SelectedRow;
+            Tela_Update Update = new Tela_Update(row);
+            Response.Redirect("Tela_Update.aspx", false);
 
         }
+
+        protected void gwPessoas_RowEditing(object sender, EventArgs e)
+        {
+           
+
+        }
+
     }
 }

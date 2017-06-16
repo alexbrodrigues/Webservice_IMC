@@ -6,9 +6,8 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContent" runat="server">
     <br />
-    <h1>Tela de Cadastro</h1>
+    <h1>Tela de Edição</h1>
     <br />
-<asp:Button ID="Button" runat="server" Text="Button" onclick="Button_Click" />
     <asp:Label ID="labelNome"  runat="server" Text="Nome: "></asp:Label>
     <asp:TextBox ID="textboxNome" runat="server" CssClass="radiusInput" ></asp:TextBox>
     <br />
@@ -111,7 +110,7 @@ Data: <asp:TextBox ID="txtData" runat="server" Columns="10" MaxLength="10" />
     <br />
     <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="BtEnviar" runat="server"  CssClass="btnAdd btn" Text="Cadastrar" OnClick="BtEnviar_Click" />
+    <asp:Button ID="BtEnviar" runat="server"  CssClass="btnAdd btn" Text="Atualizar" OnClick="BtEnviar_Click" />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
     <asp:Button ID="BtLimpar" runat="server" CssClass="btn btnEdit" OnClick="BtLimpar_Click" Text="Limpar" />
 </asp:Content>
